@@ -14,7 +14,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> loginUser(String email, String password) async {
     final response = await http.post(
-      Uri.parse('your url'),
+      Uri.parse(
+          'https://test-atre-server-v2.up.railway.app/api-v2/admin/login-for-first'),
       headers: <String, String>{
         'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -25,10 +26,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     if (response.statusCode == 200) {
+      
       // Login successful, handle response here
       print(response.body);
+     
     } else {
-      print(response);
+      //print(response);
       // Login failed, handle error here
       print('Login failed: ${response.reasonPhrase}');
     }
@@ -52,15 +55,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(29)),
                 child: Column(
                   children: [
-                    SizedBox(height: 50),
-                    Text(
+                    const SizedBox(height: 50),
+                    const Text(
                       'Login',
                       style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.redAccent),
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.only(left: 100, right: 100),
                       child: TextFormField(
@@ -73,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         },
                       ),
                     ),
-                    SizedBox(height: 35),
+                    const SizedBox(height: 35),
                     Padding(
                       padding: const EdgeInsets.only(left: 100, right: 100),
                       child: TextFormField(
@@ -95,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         String password = _passwordController.text;
                         loginUser(email, password);
                       },
-                      child: Text('Login'),
+                      child: const Text('Login'),
                     ),
                   ],
                 ),
